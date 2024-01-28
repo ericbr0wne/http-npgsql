@@ -26,32 +26,47 @@ public class Tables(NpgsqlDataSource db)
 
         await db.CreateCommand(qUsers).ExecuteNonQueryAsync();
 
+        const string qTodo = @"
+        CREATE TABLE IF NOT EXISTS Todo(
+            todo_id SERIAL PRIMARY KEY,
+            description TEXT NOT NULL,
+            date DateOnly NOT NULL, 
+            time TimeOnly NOT NULL";
+
+        await db.CreateCommand(qTodo).ExecuteNonQueryAsync();
+
     }
 }
 
-        /*
-        }
 
 
-         (var cmd = db.CreateCommand("CREATE TABLE IF NOT EXISTS test(value TEXT)"))
+
+
+
+
+/*
+}
+
+
+ (var cmd = db.CreateCommand("CREATE TABLE IF NOT EXISTS test(value TEXT)"))
 {
-    await cmd.ExecuteNonQueryAsync();
+await cmd.ExecuteNonQueryAsync();
 }
 
 await using (var cmd = db.CreateCommand("INSERT INTO test (value) VALUES ($1)"))
 {
-    cmd.Parameters.AddWithValue("Hello, World!");
-    await cmd.ExecuteNonQueryAsync();
+cmd.Parameters.AddWithValue("Hello, World!");
+await cmd.ExecuteNonQueryAsync();
 }
 
 await using (var cmd = db.CreateCommand("SELECT * FROM test"))
 await using (var reader = await cmd.ExecuteReaderAsync())
 {
-    while (await reader.ReadAsync())
-    {
-        Console.WriteLine(reader.GetString(0));
-    }
+while (await reader.ReadAsync())
+{
+Console.WriteLine(reader.GetString(0));
+}
 }
 
-        */
+*/
 

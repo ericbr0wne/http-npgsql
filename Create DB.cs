@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace http_npgsql
 {
-    internal class Create_tables
+    public class CreateDB
     {
     }
 }
